@@ -290,15 +290,15 @@ sudo systemctl start dcvserver
 # cat /etc/dcv/dcv.conf
 
 # create a session
-sudo dcv create-session --owner $USER session1 --type=console 
-echo You should be non-root to test DCV session creation and be able to login as that user 
-dcv create-session --type=virtual test1
+# sudo dcv create-session --owner $USER session1 --type=console 
+# echo You should be non-root to test DCV session creation and be able to login as that user 
+# dcv create-session --type=virtual test1
 # list sessions
-dcv list-sessions
+# dcv list-sessions
 # for details
 # dcv list-sessions -j
 # get details of session
-dcv describe-session test1 
+# dcv describe-session session1 
 # close session
 # dcv close-session {session_id}
 

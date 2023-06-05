@@ -51,3 +51,6 @@ source /home/ubuntu/.bashrc
 # Cleanup: Delete all .deb files
 echo "Delete all .deb files and aws zip file"
 rm *.deb awscliv2.zip
+
+# Reboot the system
+sudo reboot

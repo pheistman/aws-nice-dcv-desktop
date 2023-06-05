@@ -329,5 +329,4 @@ sudo systemctl start dcvserver
 
 # connect to your DCV session
 
-# Reboot the system
-sudo reboot
+

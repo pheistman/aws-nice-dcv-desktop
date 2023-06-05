@@ -108,12 +108,11 @@ resource "aws_instance" "ubuntu-2204-nice-dcv-ea" {
 
   user_data = <<-EOF
               #!/bin/bash
-              sleep 120
+              sleep 20
               cd /home/$USER
-              wget https://raw.githubusercontent.com/pheistman/aws-nice-dcv-desktop/main/dev_utils.sh
               wget https://raw.githubusercontent.com/pheistman/aws-nice-dcv-desktop/main/dcv_ubuntu_installation.sh
-              sudo chmod +x  dcv_ubuntu_installation.sh dev_utils.sh
-              ./dcv_ubuntu_installation.sh && ./dev_utils.sh
+              sudo chmod +x  dcv_ubuntu_installation.sh
+              ./dcv_ubuntu_installation.sh
               EOF
 }
 

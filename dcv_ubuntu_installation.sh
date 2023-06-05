@@ -39,6 +39,7 @@
 ###################################################
 
 # Update the OS with latest patches and Prerequisites
+sudo apt update
 sudo apt upgrade -y
 sudo apt install -y ubuntu-desktop # will take a couple of minutes
 if [ "`cat /etc/issue | grep 18.04`" != "" ] ; then

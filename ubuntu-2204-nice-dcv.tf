@@ -61,7 +61,7 @@ resource "aws_route_table_association" "rt-igw-association" {
 
 resource "aws_eip" "aws-nice-dcv-eip" {
   instance = aws_instance.ubuntu-2204-nice-dcv-ea.id
-  vpc      = true
+  domain = "vpc"
 
   tags = {
     Name = "Ubuntu NICE DCV elastic IP"
@@ -87,8 +87,8 @@ data "aws_ami" "ubuntu" {
 data "aws_region" "current" {}
 
 resource "aws_instance" "ubuntu-2204-nice-dcv-ea" {
-  ami           = data.aws_ami.ubuntu.id
-  instance_type = "t3a.large"
+  ami                         = data.aws_ami.ubuntu.id
+  instance_type               = "t3a.large"
   key_name                    = "stickee-aws"
   associate_public_ip_address = true
   subnet_id                   = aws_subnet.aws-nice-dcv-public-subnet.id
@@ -193,8 +193,8 @@ resource "aws_iam_policy_attachment" "NICEPolicyAttachment" {
 }
 
 resource "aws_iam_instance_profile" "NICEDCVLicenseInstanceProfile" {
-  name   = "NICEDCVLicenseInstanceProfile"
-  role   = aws_iam_role.DCVLicenseAccessRole.name
+  name = "NICEDCVLicenseInstanceProfile"
+  role = aws_iam_role.DCVLicenseAccessRole.name
 }
 
 resource "aws_security_group" "ubuntu-nice-dcv-sg-ea" {

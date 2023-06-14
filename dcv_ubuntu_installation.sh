@@ -331,12 +331,19 @@ sudo systemctl start dcvserver
 # connect to your DCV session
 
 # Install other dev utilities
-# Download and install VSCode, Termius and Google Chrome
-echo "Download and install VSCode, Termius and Google Chrome"
+# Download and install Termius and Google Chrome
+echo "Download and install Termius and Google Chrome"
 wget https://www.termius.com/download/linux/Termius.deb
 wget -O vscode.deb https://go.microsoft.com/fwlink/?LinkID=760868
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 sudo dpkg -i *google*.deb vscode.deb Termius.deb
+
+# Install VSCode
+wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
+sudo install -D -o root -g root -m 644 packages.microsoft.gpg /etc/apt/keyrings/packages.microsoft.gpg
+sudo sh -c 'echo "deb [arch=amd64,arm64,armhf signed-by=/etc/apt/keyrings/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main" > /etc/apt/sources.list.d/vscode.list'
+rm -f packages.microsoft.gpg
+sudo apt install apt-transport-https
 
 # Install aws-cli
 echo "Install aws-cli"
@@ -363,9 +370,10 @@ sudo add-apt-repository --yes --update ppa:ansible/ansible
 sudo apt install ansible -y
 sudo apt install git-extras terminator -y
 
-# Finish installing Terraform, pyhton3-pip and Terminator
-echo "Finish installing Terraform, pyhton3-pip and Terminator"
-sudo apt-get install terraform python3-pip terminator -y
+# Finish installing Terraform, VSCode, pyhton3-pip and Terminator
+sudo apt-get update 
+echo "Finish installing Terraform, VSCode, pyhton3-pip and Terminator"
+sudo apt-get install terraform code python3-pip terminator -y
 touch ~/.bashrc
 terraform -install-autocomplete
 
